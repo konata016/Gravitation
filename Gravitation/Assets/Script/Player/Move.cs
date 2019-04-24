@@ -19,7 +19,7 @@ public class Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //空中にいるときは実行しない
         if (gameObject.GetComponent<IsGround>().IsReady)
