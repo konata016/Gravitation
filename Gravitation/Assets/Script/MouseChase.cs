@@ -9,14 +9,13 @@ public class MouseChase : MonoBehaviour
     Vector3 TargetPos;
     Vector3 Velocity;
 
-    public Rigidbody rb;
-
     private float SmoothTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //Planetの初期値
+        TargetPos = new Vector3(0, 5, 0);
     }
 
     // Update is called once per frame

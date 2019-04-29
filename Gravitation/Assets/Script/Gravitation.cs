@@ -5,30 +5,49 @@ using UnityEngine;
 public class Gravitation : MonoBehaviour
 {
     public GameObject Planet;   // 引力の発生する星
-    public float Coefficient;	// 万有引力係数
-
     public Rigidbody rb;        //万有引力の式をアタッチするオブジェクト
-    public Rigidbody PlanetRb;  //引力を発生させる物体
+
+    public float Speed = 1f;    //力の速度
+
+    bool IsPlanetField;         //引力を発生させる空間に入った時に引力を発生させる判定用
+    bool CheckExit;             //引力を発生させる空間から抜けたかどうかの判定用
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        PlanetRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // 星に向かう向きの取得
-        var Direction = Planet.transform.position - transform.position;
-        // 星までの距離の２乗を取得
-        var Distance = Direction.magnitude;
-        Distance *= Distance;
-        // 万有引力計算
-        var gravity = Coefficient * PlanetRb.mass * rb.mass / Distance;
+        if (IsPlanetField)
+        {
+            // 星に向かう向きの取得
+            var Direction = Planet.transform.position - transform.position;
 
-        // 力を与える
-        rb.AddForce(gravity * Direction.normalized, ForceMode.Force);
+            //Planetの方向に力を加える
+            rb.AddForce(Direction.normalized * Speed, ForceMode.Force);
+
+            CheckExit = true;
+        }
+        else
+        {
+            if (CheckExit)
+            {
+                rb.velocity = Vector3.zero;
+                CheckExit = false;
+            }
+        }
+
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        IsPlanetField = true;
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        IsPlanetField = false;
     }
 }
