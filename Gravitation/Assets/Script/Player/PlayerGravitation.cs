@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gravitation : MonoBehaviour
+public class PlayerGravitation : MonoBehaviour
 {
     public GameObject Planet;   // 引力の発生する星
     Rigidbody rb;        //万有引力の式をアタッチするオブジェクト
@@ -21,7 +21,7 @@ public class Gravitation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (IsPlanetField)
+        if (IsPlanetField && Input.GetMouseButton(1))
         {
             // 星に向かう向きの取得
             var Direction = Planet.transform.position - transform.position;
@@ -42,7 +42,7 @@ public class Gravitation : MonoBehaviour
 
     }
 
-    public void OnTriggerStay (Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Field") IsPlanetField = true;
     }
