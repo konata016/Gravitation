@@ -5,6 +5,11 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public GameObject Target;
+    public Vector3 V3;
+
+    //public float Speed;
+    public float SmoothTime = 0.1f;
+    Vector3 Velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -15,14 +20,20 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(new Vector3(transform.localPosition.z, 0f, 0f));
-        //transform.rotation = Quaternion.LookRotation(Vector3.forward,Target.transform.position);
+        //transform.LookAt(new Vector3(transform.localPosition.z, 0f, 0f));
 
-        Vector3 pos = transform.position;
+        //float Step = Speed * Time.deltaTime;
 
-        pos.x = Target.transform.position.x;
-        pos.y = Target.transform.position.y + 4;
-        pos.z = Target.transform.position.z - 6;
-        transform.position = pos;
+        Vector3 Pos = transform.position;
+
+        Pos.x = Target.transform.position.x + V3.x;
+        Pos.y = V3.y;
+        Pos.z = Target.transform.position.z + V3.z;
+
+        if (!Input.GetMouseButton(0))
+        {
+            //transform.position = Vector3.MoveTowards(transform.position, Pos, Step);
+            transform.position = Vector3.SmoothDamp(transform.position, Pos, ref Velocity, SmoothTime);
+        }
     }
 }

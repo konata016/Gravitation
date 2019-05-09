@@ -33,6 +33,9 @@ public class Move : MonoBehaviour
             {
                 rb.AddForce(MaxSpeed * ((Vector3.right * Speed) - rb.velocity));
             }
+
+            //ボタンを離したら力をなくす
+            if (!Input.anyKey) rb.velocity = Vector3.zero;
         }
 
     }
