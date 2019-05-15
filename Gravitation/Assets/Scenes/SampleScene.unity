@@ -1100,10 +1100,10 @@ Animator:
   m_GameObject: {fileID: 1858651267}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cc73fd6a5eefe8740bf0e51952f3c49d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 387afbb930056ef458848d7b4620faca, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4fe7185866b1f40a20c159684fa544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RayDis: 2
 --- !u!1 &1858651281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858651267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.25, z: 0}
+  m_LocalPosition: {x: -8.93, y: 3.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1859082581}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turnaround : MonoBehaviour
 {
-    Vector3 Direction;
+    Vector3 Direction = Vector3.left;
 
 
     // Start is called before the first frame update

@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnime : MonoBehaviour
+public class ttest : MonoBehaviour
 {
     private Animator Anim;
-    private Rigidbody rb;
+
     public float RayDis = 2f;   //Rayの長さ
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //Rayの作成
         Ray ray = new Ray(transform.position, new Vector3(0, -1, 0));
 
@@ -30,14 +28,6 @@ public class PlayerAnime : MonoBehaviour
         else Anim.SetBool("Jump2", false);
 
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) Anim.SetBool("Running", true);
-        else Anim.SetBool("Running", false);
-
-
-        if (rb.velocity.magnitude == 0f) Anim.SetBool("Float", true);
-        else Anim.SetBool("Float", false);
-
-        Debug.Log(message: rb.velocity.magnitude);
         //if (gameObject.GetComponent<IsGround>().IsReady)Anim.SetBool("Jump2", true);
         //else Anim.SetBool("Jump2", false);
     }
