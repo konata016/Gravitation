@@ -37,7 +37,7 @@ public class PlayerAnime : MonoBehaviour
         if (rb.velocity.magnitude == 0f) Anim.SetBool("Float", true);
         else Anim.SetBool("Float", false);
 
-        Debug.Log(message: rb.velocity.magnitude);
+        //Debug.Log(message: rb.velocity.magnitude);
         //if (gameObject.GetComponent<IsGround>().IsReady)Anim.SetBool("Jump2", true);
         //else Anim.SetBool("Jump2", false);
     }
