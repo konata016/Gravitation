@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6468534}
   - component: {fileID: 6468536}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GravityGage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,8 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef61e3d2a964aa74a989936535ec7daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIobj: {fileID: 6468534}
-  roop: 1
+  GravityGage: {fileID: 6468534}
   countTime: 5
 --- !u!1 &170076733
 GameObject:
@@ -1467,13 +1466,14 @@ GameObject:
   - component: {fileID: 1851373237}
   - component: {fileID: 1858651272}
   - component: {fileID: 1858651270}
+  - component: {fileID: 1858651280}
   - component: {fileID: 2067305082}
   - component: {fileID: 1858651268}
   - component: {fileID: 1858651274}
   - component: {fileID: 1858651275}
   - component: {fileID: 1858651276}
   - component: {fileID: 1858651278}
-  - component: {fileID: 1858651280}
+  - component: {fileID: 1858651282}
   m_Layer: 0
   m_Name: UTC_Default
   m_TagString: Untagged
@@ -1644,6 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ec9e6e7f26feb4b98dbc38c2040877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GravityGage: {fileID: 6468534}
   GravityShield: {fileID: 1730969482}
 --- !u!1 &1858651279
 GameObject:
@@ -1691,6 +1692,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1858651282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858651267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea5c4e5de82aa840abc7322526a0abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravityGage: {fileID: 6468534}
 --- !u!1 &1858651283
 GameObject:
   m_ObjectHideFlags: 0
