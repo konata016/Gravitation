@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public Rigidbody rb;
+    private Rigidbody rb;
 
     //初速
-    public float Speed = 1f;
+    public float Speed = 10f;
 
     //マックス速度
-    public float MaxSpeed = 3f;
+    public float MaxSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
