@@ -11,6 +11,7 @@ public class Gage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //プレイヤーを引力の影響下における時間
         if (Input.GetMouseButton(1))
         {
             GravityGage.fillAmount -= 1.0f / countTime * Time.deltaTime;
