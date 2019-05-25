@@ -29,10 +29,20 @@ public class EnemyHpUI : MonoBehaviour
     public void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag == "PlanetCore") IsPlanetCore = true;
-        Debug.Log("hit");
     }
     public void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "PlanetCore") IsPlanetCore = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //プラネットフィールドに入った場合HPを可視化する
+        if (other.gameObject.tag == "Field") EnemyHpGage.gameObject.SetActive(true);
+    }
+    void OnTriggerExit(Collider other)
+    {
+        //プラネットフィールドから出た場合
+        EnemyHpGage.gameObject.SetActive(false);
     }
 }

@@ -8,9 +8,13 @@ public class PosChange : MonoBehaviour
     Vector3 Pos;
     int Count;
 
+    [Header("移動位置リスト")]
     public GameObject[] TargetPos;
+
+    [Header("見つける位置")]
     public GameObject LookTarget;
 
+    [Header("向かうまでの時間")]
     public float SmoothTime = 0.1f;
 
     // Start is called before the first frame update

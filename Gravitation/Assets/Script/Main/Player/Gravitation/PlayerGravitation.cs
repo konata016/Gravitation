@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerGravitation : MonoBehaviour
 {
+    public Image GravityGage;   //引力操作可能時間
+
     public GameObject Planet;   // 引力の発生する星
-    Rigidbody rb;        //万有引力の式をアタッチするオブジェクト
+    Rigidbody rb;               //万有引力の式をアタッチするオブジェクト
 
     public float Speed = 1f;    //力の速度
 
@@ -21,7 +24,7 @@ public class PlayerGravitation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (IsPlanetField && Input.GetMouseButton(1))
+        if (IsPlanetField && Input.GetMouseButton(1) && GravityGage.fillAmount > 0)
         {
             // 星に向かう向きの取得
             var Direction = Planet.transform.position - transform.position;

@@ -7,7 +7,7 @@ public class Gravitation : MonoBehaviour
     public GameObject Planet;   // 引力の発生する星
     Rigidbody rb;        //万有引力の式をアタッチするオブジェクト
 
-    public float Speed = 1f;    //力の速度
+    public float Speed = 30f;    //力の速度
 
     bool IsPlanetField;         //引力を発生させる空間に入った時に引力を発生させる判定用
     bool CheckExit;             //引力を発生させる空間から抜けたかどうかの判定用
