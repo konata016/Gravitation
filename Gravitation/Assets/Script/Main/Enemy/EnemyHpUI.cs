@@ -8,12 +8,12 @@ public class EnemyHpUI : MonoBehaviour
     public Image EnemyHpGage;
     public float countTime = 5.0f;
 
-    bool IsPlanetCore;
+    public bool IsPlanetCore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyHpGage.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class EnemyHpUI : MonoBehaviour
         //プラネットのコアに当たるとHpゲージを減らす
         if (IsPlanetCore)
         {
-            EnemyHpGage.fillAmount -= 1.0f / countTime * Time.deltaTime;
+            //EnemyHpGage.fillAmount -= 1.0f / countTime * Time.deltaTime;
         }
     }
 
