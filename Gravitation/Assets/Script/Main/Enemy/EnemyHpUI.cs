@@ -13,7 +13,7 @@ public class EnemyHpUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnemyHpGage.gameObject.SetActive(true);
+        EnemyHpGage.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

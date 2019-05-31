@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Move : MonoBehaviour
 {
@@ -35,7 +36,16 @@ public class Move : MonoBehaviour
             }
 
             //ボタンを離したら力をなくす
-            if (!Input.anyKey) rb.velocity = Vector3.zero;
+            if (!Input.anyKey)
+            {
+                rb.velocity = Vector3.zero;
+                ////キーボード入力だけ検出
+                //foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+                //{
+                //    if (!Input.GetKey(code)) rb.velocity = Vector3.zero;
+                //}
+            }
+            
         }
 
     }
