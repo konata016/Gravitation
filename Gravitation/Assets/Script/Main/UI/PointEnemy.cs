@@ -6,17 +6,16 @@ using UnityEngine.UI;
 public class PointEnemy : MonoBehaviour
 {
     GameObject[] EnemyArray;
-    Vector3 Velocity;
+    List<bool> IsActive = new List<bool>();
     List<GameObject> PointObj = new List<GameObject>();
     List<GameObject> EnemyObj = new List<GameObject>();
 
-    public Camera Cam;
     public GameObject TargetPos;
     int EnemyCount;
 
 
-    [Header("向かうまでの時間")]
-    public float SmoothTime = 1.5f;
+    [Header("向かう速度")]
+    public float Speed = 10f;
 
     [Header("敵を倒した時に表示するテキスト")]
     public GameObject Point;
@@ -36,11 +35,14 @@ public class PointEnemy : MonoBehaviour
         //他のスクリプトに得点を渡す用
         SetEenmyPoint= EenmyPoint;
 
-        //敵の数分だけ配列(フラグ)を作る
         EnemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject Enemy in EnemyArray)
         {
+            //敵情報格納
             EnemyObj.Add(Enemy);
+
+            //ポイントのアクティブフラグの初期化
+            IsActive.Add(false);
 
             //ポイントオブジェクトの初期位置
             Vector3 Pos = Enemy.transform.position;
@@ -55,32 +57,28 @@ public class PointEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float Step = Speed * Time.deltaTime;
+
         //敵のHPがなくなったら得点を出す
-        for(int i = 0; i < EnemyCount; i++)
+        for (int i = 0; i < EnemyCount; i++)
         {
             if (EnemyObj[i].GetComponent<EnemyHpUI>().EnemyHpGage.fillAmount <= 0.1f)
             {
-                PointObj[i].transform.position = EnemyObj[i].transform.position;
                 PointObj[i].SetActive(true);
+                if (!IsActive[i])
+                {
+                    PointObj[i].transform.position = EnemyObj[i].transform.position;
+                    IsActive[i] = true;
+                }
+                
             }
         }
 
-
-        //作ったポイントオブジェクトのリスト作成
-        //PointObj = GameObject.FindGameObjectsWithTag("PopUpPoint");
-        //foreach (GameObject PopUpPoint in PointObj)
-        //{
-        //    //画面右上取得
-        //    Vector3 Pos = RectTransformUtility.WorldToScreenPoint(Cam,Vector3.zero);
-        //    //Pos.Scale(new Vector3(-1f, 3.5f, 1f));
-
-        //    //画面右上まで行く
-        //    //PopUpPoint.transform.position = Vector3.MoveTowards(PopUpPoint.transform.position, Pos, Step);
-        //    PopUpPoint.transform.position =
-        //    Vector3.SmoothDamp(PopUpPoint.transform.position, Pos, ref Velocity, SmoothTime);
-
-        //    //目標地点まで行ったときにテキストを消す
-        //    //if (Pos.x == PopUpPoint.transform.position.x) Destroy(PopUpPoint);
-        //}
+        //得点の移動
+        for (int i = 0; i < EnemyCount; i++)
+        {
+            PointObj[i].transform.position =
+                Vector3.MoveTowards(PointObj[i].transform.position, TargetPos.transform.position, Step);
+        }
     }
 }

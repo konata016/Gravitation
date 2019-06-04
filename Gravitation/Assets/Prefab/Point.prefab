@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1286459591918636635}
   - component: {fileID: 1286459591918636634}
   - component: {fileID: 1286459591918636633}
+  - component: {fileID: 5310224356065382698}
+  - component: {fileID: 4242611543034303056}
   m_Layer: 0
   m_Name: Point
   m_TagString: PopUpPoint
@@ -99,6 +101,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &5310224356065382698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286459591918636631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1000, y: 500, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4242611543034303056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286459591918636631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1f4c6ff55fba64db663df653d2c5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1286459592504824621
 GameObject:
   m_ObjectHideFlags: 0

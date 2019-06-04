@@ -9,6 +9,7 @@ TagManager:
   - PlanetCore
   - Enemy
   - PopUpPoint
+  - HitScoreBox
   layers:
   - Default
   - TransparentFX
