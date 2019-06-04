@@ -8,6 +8,7 @@ TagManager:
   - Field
   - PlanetCore
   - Enemy
+  - PopUpPoint
   layers:
   - Default
   - TransparentFX

@@ -16,10 +16,8 @@ public class EnemyWatch2 : MonoBehaviour
     float Dis;
     float FieldSiz;
 
-    float EnemyHp;
-    float TmpEnemyHp;
-
     float HpDownTime;
+    float EnemyHp;
 
     int EnemyCount;
 
@@ -46,6 +44,7 @@ public class EnemyWatch2 : MonoBehaviour
     void Update()
     {
         int Count = 0;  //敵数のカウント用
+        float TmpEnemyHp;
 
         //敵のHPの減る速度の計算
         HpDownTime = OneHpDown / (EnemyCount * HpDownSpeed);
@@ -80,6 +79,7 @@ public class EnemyWatch2 : MonoBehaviour
 
         //範囲に入った敵の数を格納
         EnemyCount = Count;
+        if (EnemyCount == 0) EnemyHp = 0;
 
     }
 }
