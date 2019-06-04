@@ -8,19 +8,18 @@ public class EnemyWatch2 : MonoBehaviour
     public GameObject GravitationField;
     GameObject[] EnemyArray;
 
-    [Header("敵のHPが0になるまでのかかる時間")]
-    public float EnemyHpTime = 5.0f;
-    [Header("範囲に入った敵数だけ早くHPが減る")]
-    public float TimeRatio = 1f;
-
-    public float HpDownSpeed;
+    [Header("敵1体のHPが0になるまでの時間")]
+    public float OneHpDown = 10f;
+    [Header("敵が多くなった時のHP減少速度")]
+    public float HpDownSpeed = 1f;
 
     float Dis;
     float FieldSiz;
 
     float EnemyHp;
     float TmpEnemyHp;
-    float HpTime;
+
+    float HpDownTime;
 
     int EnemyCount;
 
@@ -30,6 +29,7 @@ public class EnemyWatch2 : MonoBehaviour
         //GravitationFieldの範囲
         FieldSiz = GravitationField.transform.localScale.x / 2;
 
+        //初期値の設定
         int Count = 0;
         EnemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject Enemy in EnemyArray)
@@ -45,12 +45,12 @@ public class EnemyWatch2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int Count = 0;
+        int Count = 0;  //敵数のカウント用
 
         //敵のHPの減る速度の計算
-        HpTime = EnemyCount * HpDownSpeed;
+        HpDownTime = OneHpDown / (EnemyCount * HpDownSpeed);
 
-        //リストの作成
+        //敵リストの作成
         EnemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject Enemy in EnemyArray)
         {
@@ -64,7 +64,7 @@ public class EnemyWatch2 : MonoBehaviour
 
                 //敵のHPを減らす
                 if (Enemy.GetComponent<EnemyHpUI>().IsPlanetCore)
-                    Enemy.GetComponent<EnemyHpUI>().EnemyHpGage.fillAmount -= 1.0f / HpTime * Time.deltaTime;
+                    Enemy.GetComponent<EnemyHpUI>().EnemyHpGage.fillAmount -= 1.0f / HpDownTime * Time.deltaTime;
 
                 #region HP入れ替え系
                 TmpEnemyHp = Enemy.GetComponent<EnemyHpUI>().EnemyHpGage.fillAmount;

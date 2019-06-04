@@ -10,8 +10,6 @@ public class EnemyWatch : MonoBehaviour
 
     [Header("敵のHPが0になるまでのかかる時間")]
     public float EnemyHpTime=5.0f;
-    [Header("範囲に入った敵数だけ早くHPが減る")]
-    public float TimeRatio = 1f;
 
     float Dis;
     float FieldSiz;
