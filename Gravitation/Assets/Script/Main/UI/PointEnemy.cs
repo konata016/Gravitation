@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PointEnemy : MonoBehaviour
 {
     GameObject[] EnemyArray;
@@ -70,7 +71,7 @@ public class PointEnemy : MonoBehaviour
                     PointObj[i].transform.position = EnemyObj[i].transform.position;
                     IsActive[i] = true;
                 }
-                
+
             }
         }
 
@@ -79,6 +80,8 @@ public class PointEnemy : MonoBehaviour
         {
             PointObj[i].transform.position =
                 Vector3.MoveTowards(PointObj[i].transform.position, TargetPos.transform.position, Step);
+
+            //if (TargetPos.transform.position.x == PointObj[i].transform.position.x) Destroy(PointObj[i]);
         }
     }
 }

@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopPointDest : MonoBehaviour
+public class EnemyHpCheck : MonoBehaviour
 {
-    bool IsHit;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag=="HitScoreBox")
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }

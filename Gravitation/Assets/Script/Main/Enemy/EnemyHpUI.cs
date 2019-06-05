@@ -26,9 +26,13 @@ public class EnemyHpUI : MonoBehaviour
         }
     }
 
-    public void OnCollisionStay(Collision other)
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "PlanetCore") IsPlanetCore = true;
+        if (other.gameObject.tag == "PlanetCore")
+        {
+            IsPlanetCore = true;
+
+        }
     }
     public void OnCollisionExit(Collision other)
     {
@@ -38,7 +42,12 @@ public class EnemyHpUI : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //プラネットフィールドに入った場合HPを可視化する
-        if (other.gameObject.tag == "Field") EnemyHpGage.gameObject.SetActive(true);
+        if (other.gameObject.tag == "Field")
+        {
+            EnemyHpGage.gameObject.SetActive(true);
+
+        }
+
     }
     void OnTriggerExit(Collider other)
     {

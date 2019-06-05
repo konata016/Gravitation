@@ -82,4 +82,9 @@ public class EnemyWatch2 : MonoBehaviour
         if (EnemyCount == 0) EnemyHp = 0;
 
     }
+    
+    void Damege(int EnemyAmount)
+    {
+        
+    }
 }

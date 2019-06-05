@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopPointDest : MonoBehaviour
+public class PlanetSystem : MonoBehaviour
 {
-    bool IsHit;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag=="HitScoreBox")
+        if(collision.gameObject.tag=="Enemy")
         {
-            Destroy(gameObject);
+            GravityAreaDamage.IsActive=true;
         }
     }
 }

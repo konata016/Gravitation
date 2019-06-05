@@ -12,6 +12,9 @@ public class EnemyDestroy : MonoBehaviour
 
     int Wait;
 
+    public Vector3 DeadPoint { get; set; }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,15 +43,15 @@ public class EnemyDestroy : MonoBehaviour
                 {
                     Instantiate(Particle, Enemy.transform);
                     IsParticle[Count] = true;
+
                 }
-                else IsParticle[Count] = false;
-                //Destroy(Enemy, 0.1f);
-                if (Wait > 10)
-                {
-                    Enemy.SetActive(false);
-                    Wait = 0;
-                }
-                else Wait++;
+                Destroy(Enemy, 0.1f);
+                //if (Wait > 10)
+                //{
+                //    Enemy.SetActive(false);
+                //    Wait = 0;
+                //}
+                //else Wait++;
 
             }
             Count++;
