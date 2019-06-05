@@ -24,11 +24,7 @@ public class EnemyGenerator : MonoBehaviour
     [Header("敵を倒した時に表示するパーティクル")]
     public GameObject DeatParticle;
 
-    [Header("引力")]
-    public float GravitationSpeed = 30f;
-
     public static float      HpDownSpeed     { set; get; }
-    public static float      Gravitation     { set; get; }
     public static int        EnemyPoint      { set; get; }
     public static GameObject PointObj        { set; get; }
     public static float      PTextSpeed      { set; get; }
@@ -47,7 +43,6 @@ public class EnemyGenerator : MonoBehaviour
         PointObj    = PointObject;
         PTextSpeed  = TextSpeed;
         DeatEffect  = DeatParticle;
-        Gravitation = GravitationSpeed; 
     }
 
     // Update is called once per frame

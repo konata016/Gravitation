@@ -25,7 +25,7 @@ public class Gravitation : MonoBehaviour
             var Direction = Planet.transform.position - transform.position;
 
             //Planetの方向に力を加える
-            rb.AddForce(Direction.normalized * EnemyGenerator.Gravitation, ForceMode.Force);
+            rb.AddForce(Direction.normalized * GameGenerator.Gravitation, ForceMode.Force);
 
             CheckExit = true;
         }

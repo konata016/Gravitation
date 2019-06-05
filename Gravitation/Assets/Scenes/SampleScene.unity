@@ -697,6 +697,7 @@ GameObject:
   - component: {fileID: 943228293}
   - component: {fileID: 943228292}
   - component: {fileID: 943228291}
+  - component: {fileID: 943228294}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -752,6 +753,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943228294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943228290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ff3c8dd2aded84e9b96853aa01bb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravitationSpeed: 30
 --- !u!1 &946262259
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +868,6 @@ MonoBehaviour:
   TextSpeed: 15
   DeatParticle: {fileID: 7380784913159382560, guid: e0d50a428a5fdfc4fb7ef9259bb86189,
     type: 3}
-  GravitationSpeed: 30
 --- !u!1 &1157706547
 GameObject:
   m_ObjectHideFlags: 0
