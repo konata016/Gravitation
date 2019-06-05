@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHpUI : MonoBehaviour
+public class EnemyHpCheck : MonoBehaviour
 {
+    bool IsPlanetCore;
     public Image EnemyHpGage;
-    public float countTime = 5.0f;
-
-    public bool IsPlanetCore;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +17,15 @@ public class EnemyHpUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //プラネットのコアに当たるとHpゲージを減らす
+        //プラネットコアに触れた場合Hpを減少させる
         if (IsPlanetCore)
         {
-            //EnemyHpGage.fillAmount -= 1.0f / countTime * Time.deltaTime;
+            EnemyHpGage.fillAmount -=
+            EnemyGenerator.HpDownSpeed * Time.deltaTime * (EnemyGenerator.FieldHitCount / 2f);
         }
     }
 
-    public void OnCollisionStay(Collision other)
+    public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "PlanetCore") IsPlanetCore = true;
     }
@@ -37,12 +36,18 @@ public class EnemyHpUI : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //プラネットフィールドに入った場合HPを可視化する
-        if (other.gameObject.tag == "Field") EnemyHpGage.gameObject.SetActive(true);
+        if (other.gameObject.tag == "Field")
+        {
+            // プラネットフィールドに入った場合HPを可視化する
+            EnemyHpGage.gameObject.SetActive(true);
+        }
     }
     void OnTriggerExit(Collider other)
     {
         //プラネットフィールドから出た場合
-        EnemyHpGage.gameObject.SetActive(false);
+        if (other.gameObject.tag == "Field")
+        {
+            EnemyHpGage.gameObject.SetActive(false);
+        }
     }
 }

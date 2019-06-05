@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopPointDest : MonoBehaviour
 {
-    bool IsHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +14,12 @@ public class PopPointDest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsHit) Destroy(gameObject);
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "HitScoreBox")
         {
-            Debug.Log("hit");
-            IsHit = true;
+            Destroy(gameObject);
         }
-        //Debug.Log("hit");
     }
 }

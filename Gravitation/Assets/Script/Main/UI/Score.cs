@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetPoint : MonoBehaviour
+public class Score : MonoBehaviour
 {
-    Text Txt;
+    public Text ScoreTxt;
+    int ScorePoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        Txt = GetComponent<Text>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //敵が消滅するときに得点を出す
-        Txt.text = "+" + EnemyGenerator.EnemyPoint;
+        ScoreTxt.text = "" + ScorePoint;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        ScorePoint += EnemyGenerator.EnemyPoint;
     }
 }
