@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gravitation : MonoBehaviour
 {
-    public GameObject Planet;   // 引力の発生する星
+    GameObject Planet;   // 引力の発生する星
     Rigidbody rb;               //万有引力の式をアタッチするオブジェクト
 
     bool IsPlanetField;         //引力を発生させる空間に入った時に引力を発生させる判定用
@@ -14,6 +14,7 @@ public class Gravitation : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Planet = GameObject.Find("Planet"); 
     }
 
     // Update is called once per frame
