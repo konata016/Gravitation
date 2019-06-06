@@ -7,7 +7,6 @@ public class Cannon : MonoBehaviour
     public GameObject Turret;
     public GameObject Bullet;
 
-    public float WaitTime = 1f;
     float Timer;
 
     // Start is called before the first frame update
@@ -22,7 +21,7 @@ public class Cannon : MonoBehaviour
         Timer += Time.deltaTime;
 
         //一定の時間間隔で弾を出す
-        if (Timer >= WaitTime)
+        if (Timer >= ObjGenerator.BulletWaitTime)
         {
             Instantiate(Bullet, Turret.transform);
             Timer = 0f;

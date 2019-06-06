@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gravitation : MonoBehaviour
 {
-    GameObject Planet;   // 引力の発生する星
+    GameObject Planet;          // 引力の発生する星
     Rigidbody rb;               //万有引力の式をアタッチするオブジェクト
 
     bool IsPlanetField;         //引力を発生させる空間に入った時に引力を発生させる判定用
@@ -32,9 +32,10 @@ public class Gravitation : MonoBehaviour
         }
         else
         {
+            //フィールドから出た場合力をなくす
             if (CheckExit)
             {
-                rb.velocity = Vector3.zero;
+                //rb.velocity = Vector3.zero;
                 CheckExit = false;
             }
         }

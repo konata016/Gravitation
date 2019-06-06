@@ -39,11 +39,6 @@ public class Move : MonoBehaviour
             if (!Input.anyKey)
             {
                 rb.velocity = Vector3.zero;
-                ////キーボード入力だけ検出
-                //foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
-                //{
-                //    if (!Input.GetKey(code)) rb.velocity = Vector3.zero;
-                //}
             }
             
         }

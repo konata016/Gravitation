@@ -10,10 +10,12 @@ public class ObjGenerator : MonoBehaviour
 
     [Header("大砲")]
     public float CannonBulletSpeed;
+    public float CannonBulletWaitTime;
 
-    public static float SpringMinPos { set; get; }
-    public static float SpringPower  { set; get; }
-    public static float BulletSpeed  { set; get; }
+    public static float SpringMinPos    { set; get; }
+    public static float SpringPower     { set; get; }
+    public static float BulletSpeed     { set; get; }
+    public static float BulletWaitTime  { set; get; }
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class ObjGenerator : MonoBehaviour
         SpringMinPos    = SpringMinPosition;
         SpringPower     = SpringJumpPower;
         BulletSpeed     = CannonBulletSpeed;
+        BulletWaitTime  = CannonBulletWaitTime;
     }
 
     // Update is called once per frame
