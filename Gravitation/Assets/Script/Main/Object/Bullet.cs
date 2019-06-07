@@ -28,4 +28,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Field") IsPlanetField = true;
     }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "BreakObj") Destroy(gameObject);
+    }
 }

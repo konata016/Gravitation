@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - PopUpPoint
   - HitScoreBox
+  - Bullet
+  - BreakObj
   layers:
   - Default
   - TransparentFX
