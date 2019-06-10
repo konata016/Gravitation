@@ -45,7 +45,7 @@ public class Spring : MonoBehaviour
         {
             if (!IsField)
             {
-                Rb.AddForce(Vector3.up * ObjGenerator.SpringPower);
+                Rb.AddForce(Vector3.up * ObjGenerator.SpringPower, ForceMode.Acceleration);
             }
         }
     }

@@ -12,6 +12,7 @@ TagManager:
   - HitScoreBox
   - Bullet
   - BreakObj
+  - JumpStage
   layers:
   - Default
   - TransparentFX

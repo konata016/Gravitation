@@ -33,7 +33,7 @@ public class CameraControl : MonoBehaviour
         float Rounding = Mathf.Floor(Dis);
 
         Pos.x = Target.transform.position.x + V3.x;
-        Pos.y = V3.y;
+        Pos.y = Target.transform.position.y + V3.y;
         Pos.z = Target.transform.position.z + V3.z;
 
         //マウス左クリックしているときはカメラを動かさない
