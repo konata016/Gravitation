@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class IsGround : MonoBehaviour
 {
     //地面に触れている場合の処理
-    public bool IsReady;
+    public static bool IsReady;
 
     public void OnTriggerEnter(Collider other)
     {
