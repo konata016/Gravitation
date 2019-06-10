@@ -32,14 +32,14 @@ public class PlayerAnime : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) )
         {
-            if (gameObject.GetComponent<IsGround>().IsReady) Anim.SetBool("Running", true);
+            if (IsGround.IsReady) Anim.SetBool("Running", true);
         }
         else Anim.SetBool("Running", false);
 
 
         if (!Input.GetKey(KeyCode.A) &&
             !Input.GetKey(KeyCode.D) &&
-            gameObject.GetComponent<IsGround>().IsReady)
+            IsGround.IsReady)
         {
             Anim.SetBool("Float", true);
         }

@@ -23,7 +23,7 @@ public class Move : MonoBehaviour
     void FixedUpdate()
     {
         //空中にいるときは実行しない
-        if (gameObject.GetComponent<IsGround>().IsReady)
+        if (IsGround.IsReady)
         {
             //移動
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))

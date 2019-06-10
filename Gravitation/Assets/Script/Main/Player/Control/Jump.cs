@@ -20,7 +20,7 @@ public class Jump : MonoBehaviour
         if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))
         {
             //地面に接している場合はジャンプできる
-            if (gameObject.GetComponent<IsGround>().IsReady)
+            if (IsGround.IsReady)
             {
                 rb.velocity = transform.up * JumpPower;
             }
