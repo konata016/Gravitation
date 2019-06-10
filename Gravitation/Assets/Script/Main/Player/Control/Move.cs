@@ -25,8 +25,8 @@ public class Move : MonoBehaviour
         //空中にいるときは実行しない
         if (gameObject.GetComponent<IsGround>().IsReady)
         {
-            //移動
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                //移動
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 rb.AddForce(MaxSpeed * ((Vector3.left * Speed) - rb.velocity));
             }
@@ -36,11 +36,12 @@ public class Move : MonoBehaviour
             }
 
             //ボタンを離したら力をなくす
-            if (!Input.anyKey)
+            if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.A) &&
+                 !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.D))
             {
                 rb.velocity = Vector3.zero;
             }
-            
+
         }
 
     }
