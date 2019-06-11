@@ -72,7 +72,7 @@ public class ObjGravity : MonoBehaviour
         if (collision.gameObject.tag != "Player") IsPlayer = false;
 
         //
-        Rb.velocity = Vector3.zero;
+        //Rb.velocity = Vector3.zero;
         IsSlip = false;
 
         //地面にいたときのポジションを確保

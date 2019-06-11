@@ -13,6 +13,9 @@ TagManager:
   - Bullet
   - BreakObj
   - JumpStage
+  - TargetDown
+  - TargetForward
+  - TargetRight
   layers:
   - Default
   - TransparentFX
