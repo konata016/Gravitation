@@ -20,6 +20,6 @@ public class Turnaround : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Direction = Vector3.left;
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Direction = Vector3.right;
 
-        transform.rotation = Quaternion.LookRotation(Direction);
+        //transform.rotation = Quaternion.LookRotation(Direction);
     }
 }

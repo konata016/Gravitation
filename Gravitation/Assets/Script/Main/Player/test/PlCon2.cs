@@ -8,13 +8,16 @@ public class PlCon2 : MonoBehaviour
     Rigidbody Rb;
     Vector3 V3;
     float RivalSpeed;
-    float SavePosY;
-    bool IsJump;
+    Vector3 SavePos;
 
+
+    public static bool IsJump;
+     
     public float High;
     public float JumpPower;
     public float Speed;
     public float Gravity;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +31,11 @@ public class PlCon2 : MonoBehaviour
     {
         V3 = transform.position;
 
+
         if (IsGround.IsReady)
         {
             //地面での位置
-            SavePosY = transform.position.y;
+            SavePos.y = transform.position.y;
 
             //移動
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -71,19 +75,35 @@ public class PlCon2 : MonoBehaviour
             //重力
             if (!IsJump)
             {
-                if (Rb.velocity.magnitude < 100f) Rb.AddForce(Vector3.down * Gravity);
+                //if (Rb.velocity.magnitude < 100f)
+                //{
+                //    Rb.AddForce(Vector3.down * Gravity);
+                //}
+
             }
         }
 
         //ジャンプ
         if (IsJump)
         {
-            if (transform.position.y <= High + SavePosY)
+            if (!ChangeGravity.IsGravity)
             {
-                V3.y += JumpPower * Time.deltaTime;
-                Rb.position = V3;
+                if (transform.position.y <= High)
+                {
+                    V3.y += JumpPower * Time.deltaTime;
+                    Rb.position = V3;
+                }
+                else IsJump = false;
             }
-            else IsJump = false;
+            else
+            {
+                if (transform.position.z > -High)
+                {
+                    V3.z -= JumpPower * Time.deltaTime;
+                    Rb.position = V3;
+                }
+                else IsJump = false;
+            }
         }
     }
 
