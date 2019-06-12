@@ -75,36 +75,24 @@ public class PlCon2 : MonoBehaviour
             //重力
             if (!IsJump)
             {
-                //if (Rb.velocity.magnitude < 100f)
-                //{
-                //    Rb.AddForce(Vector3.down * Gravity);
-                //}
+                if (Rb.velocity.magnitude < 100f)
+                {
+                    Rb.AddForce(Vector3.down * Gravity);
+                }
 
             }
         }
 
         //ジャンプ
-        //if (IsJump)
-        //{
-        //    if (!ChangeGravity.IsGravity)
-        //    {
-        //        if (transform.position.y <= High)
-        //        {
-        //            V3.y += JumpPower * Time.deltaTime;
-        //            Rb.position = V3;
-        //        }
-        //        else IsJump = false;
-        //    }
-        //    else
-        //    {
-        //        if (transform.position.z > -High)
-        //        {
-        //            V3.z -= JumpPower * Time.deltaTime;
-        //            Rb.position = V3;
-        //        }
-        //        else IsJump = false;
-        //    }
-        //}
+        if (IsJump)
+        {
+            if (transform.position.y <= High)
+            {
+                V3.y += JumpPower * Time.deltaTime;
+                Rb.position = V3;
+            }
+            else IsJump = false;
+        }
     }
 
     void OnCollisionEnter(Collision collision)

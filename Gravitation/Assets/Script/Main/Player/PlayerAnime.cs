@@ -30,20 +30,17 @@ public class PlayerAnime : MonoBehaviour
         else Anim.SetBool("Jump2", false);
 
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) )
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ||
+            Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
+            Anim.SetBool("Float", false);
             if (IsGround.IsReady) Anim.SetBool("Running", true);
         }
-        else Anim.SetBool("Running", false);
-
-
-        if (!Input.GetKey(KeyCode.A) &&
-            !Input.GetKey(KeyCode.D) &&
-            IsGround.IsReady)
+        else
         {
+            Anim.SetBool("Running", false);
             Anim.SetBool("Float", true);
         }
-        else Anim.SetBool("Float", false);
 
         //Debug.Log(message: rb.velocity.magnitude);
         //if (gameObject.GetComponent<IsGround>().IsReady)Anim.SetBool("Jump2", true);

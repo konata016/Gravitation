@@ -16,6 +16,7 @@ TagManager:
   - TargetDown
   - TargetForward
   - TargetRight
+  - TargetLeft
   layers:
   - Default
   - TransparentFX

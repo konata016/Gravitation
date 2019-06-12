@@ -17,10 +17,14 @@ public class PlGravityControl : MonoBehaviour
     Vector3 TargetLeft;
     Vector3 PowerDirec;
 
+    Quaternion Ang;
+
     int GravityDirec;
     bool[] MyIsGround = new bool[4];
     bool IsPlGround;
     bool Frg;
+
+    public static int RollChuck { get; set; }
 
     public float Gravity = 200f;
     public float RayLeng = 100f;
@@ -41,6 +45,8 @@ public class PlGravityControl : MonoBehaviour
         WorldGroundPos[(int)Direction.Right] = Vector3.zero;
         WorldGroundPos[(int)Direction.Left] = Vector3.zero;
 
+        Rot = new Vector3(0, 90, -90);
+
         GravityDirec = (int)Direction.Down;
     }
 
@@ -48,7 +54,6 @@ public class PlGravityControl : MonoBehaviour
     void Update()
     {
         Vector3 V3 = transform.position;
-        Vector3 PlRpt;
         RaycastHit Hit;
 
         //レイ作成
@@ -68,9 +73,29 @@ public class PlGravityControl : MonoBehaviour
         TargetLeft = WorldGroundPos[(int)Direction.Left];
 
         //入力した方向を向く
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) PlDirection = Vector3.left;
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) PlDirection = Vector3.right;
-        Rb.rotation = Quaternion.LookRotation(PlDirection, Rot);
+        if(RollChuck == (int)Direction.Forward)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Rot = new Vector3(180, 90, -90);
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Rot = new Vector3(0, 90, -90);
+        }
+        if (RollChuck == (int)Direction.Down)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Rot = new Vector3(0, -90, 0);
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Rot = new Vector3(0, 90, 0);
+        }
+        if (RollChuck == (int)Direction.Left)
+        {
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) Rot = new Vector3(0, 0, -90);
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) Rot = new Vector3(180, 0, -90);
+        }
+        if (RollChuck == (int)Direction.Right)
+        {
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) Rot = new Vector3(0, 0, 90);
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) Rot = new Vector3(180, 0, 90);
+        }
+        Ang.eulerAngles = Rot;
+        transform.rotation = Ang;
+
 
         if (IsPlGround)
         {
@@ -83,6 +108,10 @@ public class PlGravityControl : MonoBehaviour
             {
                 GravityDirec = (int)Direction.Down;
             }
+            if (Input.GetKeyDown(KeyCode.Alpha4) && !MyIsGround[(int)Direction.Left])
+            {
+                GravityDirec = (int)Direction.Left;
+            }
             if (Input.GetKeyDown(KeyCode.Alpha6) && !MyIsGround[(int)Direction.Right])
             {
                 GravityDirec = (int)Direction.Right;
@@ -94,8 +123,10 @@ public class PlGravityControl : MonoBehaviour
             {
                 if (MyIsGround[(int)Direction.Forward]) PowerDirec = Vector3.back * MovePower;
                 if (MyIsGround[(int)Direction.Down]) PowerDirec = Vector3.up * MovePower;
+                if (MyIsGround[(int)Direction.Left]) PowerDirec = Vector3.right * MovePower;
                 if (MyIsGround[(int)Direction.Right]) PowerDirec = Vector3.left * MovePower;
             }
+            Debug.Log(PowerDirec);
         }
         else
         {
@@ -111,7 +142,9 @@ public class PlGravityControl : MonoBehaviour
                 }
 
                 //向きの変更
-                Rot = Vector3.back;
+                //Rot = Vector3.back;
+                Rot = new Vector3(Rot.x, 90, -90);
+                RollChuck = (int)Direction.Forward;
 
                 if (Rb.velocity.magnitude < 100f) Rb.AddForce(Vector3.forward * Gravity);
                 Rb.position = Vector3.MoveTowards(
@@ -128,8 +161,10 @@ public class PlGravityControl : MonoBehaviour
                 }
 
                 //向きの変更
-                Rot = Vector3.zero;
+                Rot = new Vector3(0, Rot.y, 0);
+                RollChuck = (int)Direction.Down;
 
+                //重力移動
                 if (Rb.velocity.magnitude < 100f) Rb.AddForce(Vector3.down * Gravity);
                 Rb.position = Vector3.MoveTowards(
                     transform.position, new Vector3(V3.x, V3.y, TargetDown.z), 10);
@@ -145,8 +180,10 @@ public class PlGravityControl : MonoBehaviour
                 }
 
                 //向きの変更
-                Rot = Vector3.right;
+                Rot = new Vector3(Rot.x, 0, -90);
+                RollChuck = (int)Direction.Left;
 
+                //重力移動
                 if (Rb.velocity.magnitude < 100f) Rb.AddForce(Vector3.left * Gravity);
                 Rb.position = Vector3.MoveTowards(
                     transform.position, new Vector3(V3.x, TargetRight.y, V3.z), 10);
@@ -162,9 +199,10 @@ public class PlGravityControl : MonoBehaviour
                 }
 
                 //向きの変更
-                //transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
-                Rot = Vector3.left;
+                Rot = new Vector3(Rot.x, 0, 90);
+                RollChuck = (int)Direction.Right;
 
+                //重力移動
                 if (Rb.velocity.magnitude < 100f) Rb.AddForce(Vector3.right * Gravity);
                 Rb.position = Vector3.MoveTowards(
                     transform.position, new Vector3(V3.x, TargetRight.y, V3.z), 10);
@@ -173,7 +211,6 @@ public class PlGravityControl : MonoBehaviour
 
         //移動処理
         Rb.AddForce(PowerDirec);
-
 
     }
     private void OnCollisionEnter(Collision collision)
