@@ -84,27 +84,27 @@ public class PlCon2 : MonoBehaviour
         }
 
         //ジャンプ
-        if (IsJump)
-        {
-            if (!ChangeGravity.IsGravity)
-            {
-                if (transform.position.y <= High)
-                {
-                    V3.y += JumpPower * Time.deltaTime;
-                    Rb.position = V3;
-                }
-                else IsJump = false;
-            }
-            else
-            {
-                if (transform.position.z > -High)
-                {
-                    V3.z -= JumpPower * Time.deltaTime;
-                    Rb.position = V3;
-                }
-                else IsJump = false;
-            }
-        }
+        //if (IsJump)
+        //{
+        //    if (!ChangeGravity.IsGravity)
+        //    {
+        //        if (transform.position.y <= High)
+        //        {
+        //            V3.y += JumpPower * Time.deltaTime;
+        //            Rb.position = V3;
+        //        }
+        //        else IsJump = false;
+        //    }
+        //    else
+        //    {
+        //        if (transform.position.z > -High)
+        //        {
+        //            V3.z -= JumpPower * Time.deltaTime;
+        //            Rb.position = V3;
+        //        }
+        //        else IsJump = false;
+        //    }
+        //}
     }
 
     void OnCollisionEnter(Collision collision)

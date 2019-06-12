@@ -15,7 +15,6 @@ public class ObjGravity2 : MonoBehaviour
     Vector3 PowerDirec;
 
     int GravityDirec;
-    int HitRay;
     bool[] MyIsGround = new bool[4];
     bool IsObjGround;
     bool Frg;
@@ -45,7 +44,6 @@ public class ObjGravity2 : MonoBehaviour
     {
         Vector3 V3 = transform.position;
         RaycastHit Hit;
-        int Count = 0;
 
         //レイ作成
         Ray_[(int)Direction.Forward] = new Ray(transform.position, Vector3.forward);
@@ -118,12 +116,19 @@ public class ObjGravity2 : MonoBehaviour
                 Rb.position = Vector3.MoveTowards(
                     transform.position, new Vector3(V3.x, V3.y, TargetDown.z), 10);
             }
-            //if (Physics.Raycast(Ray_[(int)Direction.Left], RayLeng))
-            //{
-            //    Rb.AddForce(Vector3.left * Gravity);
-            //    Rb.position = Vector3.MoveTowards(
-            //        transform.position, new Vector3(TargetRight.x, V3.y, V3.z), 10);
-            //}
+            if (Physics.Raycast(Ray_[(int)Direction.Left], RayLeng) && GravityDirec == (int)Direction.Left)
+            {
+                if (!Frg)
+                {
+                    //慣性の消去
+                    Rb.velocity = Vector3.zero;
+                    PowerDirec = Vector3.zero;
+                    Frg = true;
+                }
+                Rb.AddForce(Vector3.left * Gravity);
+                Rb.position = Vector3.MoveTowards(
+                    transform.position, new Vector3(V3.x, TargetRight.y, V3.z), 10);
+            }
             if (Physics.Raycast(Ray_[(int)Direction.Right], RayLeng) && GravityDirec == (int)Direction.Right)
             {
                 if (!Frg)
