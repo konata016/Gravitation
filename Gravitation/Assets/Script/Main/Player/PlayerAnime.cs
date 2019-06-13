@@ -30,8 +30,7 @@ public class PlayerAnime : MonoBehaviour
         else Anim.SetBool("Jump2", false);
 
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ||
-            Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             Anim.SetBool("Float", false);
             if (IsGround.IsReady) Anim.SetBool("Running", true);

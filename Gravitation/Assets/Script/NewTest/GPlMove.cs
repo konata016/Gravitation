@@ -7,6 +7,7 @@ public class GPlMove : MonoBehaviour
     Rigidbody Rb;
     Vector3 V3;
     float RivalSpeed;
+    bool IsKey;
 
     public float Speed;
 
@@ -34,33 +35,27 @@ public class GPlMove : MonoBehaviour
             if (PlGravityControl.RollChuck == (int)GravityDirec.Forward ||
                 PlGravityControl.RollChuck == (int)GravityDirec.Down)
             {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-                {
-                    Rb.AddForce(RivalSpeed * ((Vector3.left * Speed) - Rb.velocity));
-                }
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-                {
-                    Rb.AddForce(RivalSpeed * ((Vector3.right * Speed) - Rb.velocity));
-                }
+                float X=Input.GetAxis("Horizontal") * Speed;
+                Rb.AddForce(RivalSpeed * (new Vector3(X, 0, 0) - Rb.velocity)); 
             }
             else
             {
-                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-                {
-                    Rb.AddForce(RivalSpeed * ((Vector3.forward * Speed) - Rb.velocity));
-                }
-                if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-                {
-                    Rb.AddForce(RivalSpeed * ((Vector3.back * Speed) - Rb.velocity));
-                }
+                float Z = Input.GetAxis("Vertical") * Speed;
+                Rb.AddForce(RivalSpeed * (new Vector3(0, 0, Z) - Rb.velocity));
             }
 
             //慣性を消す
-            if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.A) &&
-                    !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.D))
+            if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0 && !Input.anyKey)
             {
-                Rb.velocity = new Vector3(0, Rb.velocity.y, 0);
+                if (!IsKey)
+                {
+                    Rb.isKinematic = true;
+                    IsKey = true;
+                }
             }
+            else IsKey = false;
+
+            if (IsKey) Rb.isKinematic = false;
         }
     }
 }

@@ -75,23 +75,23 @@ public class PlGravityControl : MonoBehaviour
         //入力した方向を向く
         if(RollChuck == (int)Direction.Forward)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Rot = new Vector3(180, 90, -90);
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Rot = new Vector3(0, 90, -90);
+            if (Input.GetAxis("Horizontal") < 0) Rot = new Vector3(180, 90, -90);
+            if (Input.GetAxis("Horizontal") > 0) Rot = new Vector3(0, 90, -90);
         }
         if (RollChuck == (int)Direction.Down)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Rot = new Vector3(0, -90, 0);
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Rot = new Vector3(0, 90, 0);
+            if (Input.GetAxis("Horizontal") < 0) Rot = new Vector3(0, -90, 0);
+            if (Input.GetAxis("Horizontal") > 0) Rot = new Vector3(0, 90, 0);
         }
         if (RollChuck == (int)Direction.Left)
         {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) Rot = new Vector3(0, 0, -90);
-            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) Rot = new Vector3(180, 0, -90);
+            if (Input.GetAxis("Vertical") > 0) Rot = new Vector3(0, 0, -90);
+            if (Input.GetAxis("Vertical") < 0) Rot = new Vector3(180, 0, -90);
         }
         if (RollChuck == (int)Direction.Right)
         {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) Rot = new Vector3(0, 0, 90);
-            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) Rot = new Vector3(180, 0, 90);
+            if (Input.GetAxis("Vertical") > 0) Rot = new Vector3(0, 0, 90);
+            if (Input.GetAxis("Vertical") < 0) Rot = new Vector3(180, 0, 90);
         }
         Ang.eulerAngles = Rot;
         transform.rotation = Ang;
@@ -100,26 +100,28 @@ public class PlGravityControl : MonoBehaviour
         if (IsPlGround)
         {
             //移動速度、位置代入
-            if (Input.GetKeyDown(KeyCode.Alpha5) && !MyIsGround[(int)Direction.Forward])
+            if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Alpha5) && !MyIsGround[(int)Direction.Forward])
             {
                 GravityDirec = (int)Direction.Forward;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && !MyIsGround[(int)Direction.Down])
+            if (Input.GetKeyDown("joystick button 0") || Input.GetKeyDown(KeyCode.Alpha2) && !MyIsGround[(int)Direction.Down])
             {
                 GravityDirec = (int)Direction.Down;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4) && !MyIsGround[(int)Direction.Left])
+            if (Input.GetKeyDown("joystick button 2") || Input.GetKeyDown(KeyCode.Alpha4) && !MyIsGround[(int)Direction.Left])
             {
                 GravityDirec = (int)Direction.Left;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha6) && !MyIsGround[(int)Direction.Right])
+            if (Input.GetKeyDown("joystick button 1") || Input.GetKeyDown(KeyCode.Alpha6) && !MyIsGround[(int)Direction.Right])
             {
                 GravityDirec = (int)Direction.Right;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha5) ||
-                Input.GetKeyDown(KeyCode.Alpha2) ||
-                Input.GetKeyDown(KeyCode.Alpha6))
+            if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown("joystick button 3") ||
+                Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 0") ||
+                Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown("joystick button 1" +
+                "") ||
+                Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown("joystick button 2"))
             {
                 if (MyIsGround[(int)Direction.Forward]) PowerDirec = Vector3.back * MovePower;
                 if (MyIsGround[(int)Direction.Down]) PowerDirec = Vector3.up * MovePower;
