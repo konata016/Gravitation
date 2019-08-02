@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerAnime : MonoBehaviour
 {
     private Animator Anim;
-    private Rigidbody rb;
+    private Rigidbody Rb;
     public float RayDis = 2f;   //Rayの長さ
+
+    //エラーをなくすためのやつ
+    public void OnCallChangeFace() { }
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

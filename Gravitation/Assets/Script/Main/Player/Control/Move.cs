@@ -5,7 +5,7 @@ using System;
 
 public class Move : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody Rb;
 
     //初速
     public float Speed = 10f;
@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -28,18 +28,18 @@ public class Move : MonoBehaviour
                 //移動
                 if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                rb.AddForce(MaxSpeed * ((Vector3.left * Speed) - rb.velocity));
+                Rb.AddForce(MaxSpeed * ((Vector3.left * Speed) - Rb.velocity));
             }
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                rb.AddForce(MaxSpeed * ((Vector3.right * Speed) - rb.velocity));
+                Rb.AddForce(MaxSpeed * ((Vector3.right * Speed) - Rb.velocity));
             }
 
             //ボタンを離したら力をなくす
             if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.A) &&
                  !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.D))
             {
-                rb.velocity = Vector3.zero;
+                Rb.velocity = Vector3.zero;
             }
 
         }

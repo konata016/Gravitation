@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody Rb;
     public float JumpPower = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Jump : MonoBehaviour
             //地面に接している場合はジャンプできる
             if (IsGround.IsReady)
             {
-                rb.velocity = transform.up * JumpPower;
+                Rb.velocity = transform.up * JumpPower;
             }
         }
     }

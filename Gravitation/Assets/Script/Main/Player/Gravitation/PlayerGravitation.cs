@@ -8,7 +8,7 @@ public class PlayerGravitation : MonoBehaviour
     public Image GravityGage;   //引力操作可能時間
 
     public GameObject Planet;   // 引力の発生する星
-    Rigidbody rb;               //万有引力の式をアタッチするオブジェクト
+    Rigidbody Rb;               //万有引力の式をアタッチするオブジェクト
 
     public float Speed = 1f;    //力の速度
 
@@ -18,7 +18,7 @@ public class PlayerGravitation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class PlayerGravitation : MonoBehaviour
             var Direction = Planet.transform.position - transform.position;
 
             //Planetの方向に力を加える
-            rb.AddForce(Direction.normalized * Speed, ForceMode.Force);
+            Rb.AddForce(Direction.normalized * Speed, ForceMode.Force);
 
             CheckExit = true;
         }
@@ -38,7 +38,7 @@ public class PlayerGravitation : MonoBehaviour
         {
             if (CheckExit)
             {
-                rb.velocity = Vector3.zero;
+                Rb.velocity = Vector3.zero;
                 CheckExit = false;
             }
         }
