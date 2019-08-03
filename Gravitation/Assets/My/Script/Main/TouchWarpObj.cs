@@ -7,20 +7,19 @@ public class TouchWarpObj : MonoBehaviour
 {
     Vector3 StartPos;
 
-    int WarpCount = 0;
+    int WarpCount;
+    bool IsStart;
     public Text Txt;
 
     // Start is called before the first frame update
     void Start()
     {
         StartPos = transform.position;
-        Txt.text = "リセット数:" + WarpCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     private void OnCollisionEnter(Collision collision)
     {
