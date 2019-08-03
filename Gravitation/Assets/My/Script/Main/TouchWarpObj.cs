@@ -7,7 +7,7 @@ public class TouchWarpObj : MonoBehaviour
 {
     Vector3 StartPos;
 
-    int WarpCount;
+    
     bool IsStart;
     public Text Txt;
 
@@ -28,9 +28,10 @@ public class TouchWarpObj : MonoBehaviour
             case "WarpObj":
             case "Enemy":
             case "Arrow":
+            case "Bullet":
                 transform.position = StartPos;
-                WarpCount++;
-                Txt.text = "リセット:" + WarpCount;
+               Score.WarpCount++;
+                Txt.text = "Reset:" + Score.WarpCount;
                 break;
             default: break;
         }
