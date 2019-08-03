@@ -17,6 +17,9 @@ TagManager:
   - TargetForward
   - TargetRight
   - TargetLeft
+  - Key
+  - WarpObj
+  - Arrow
   layers:
   - Default
   - TransparentFX
