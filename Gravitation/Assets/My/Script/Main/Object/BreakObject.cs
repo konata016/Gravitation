@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BreakObject : MonoBehaviour
 {
     public Image ObjHpGage;
-
+    float ObjHp;
     float SaveHp;
 
     // Start is called before the first frame update
@@ -14,6 +14,8 @@ public class BreakObject : MonoBehaviour
     {
         ObjHpGage.gameObject.SetActive(false);
         SaveHp = ObjGenerator.BreakObjHp;
+        ObjHp= ObjGenerator.BreakObjHp;
+        ObjHpGage.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -30,8 +32,8 @@ public class BreakObject : MonoBehaviour
             ObjHpGage.gameObject.SetActive(true);
 
             //Hpを減らす
-            ObjGenerator.BreakObjHp--;
-            float Hp = NumChange(ObjGenerator.BreakObjHp, 0f, SaveHp, 0f, 1f);
+            ObjHp--;
+            float Hp = NumChange(ObjHp, 0f, SaveHp, 0f, 1f);
             ObjHpGage.fillAmount = Hp;
 
             //Hpが0の時破壊する

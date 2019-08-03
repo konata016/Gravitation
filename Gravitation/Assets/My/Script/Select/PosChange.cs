@@ -75,7 +75,7 @@ public class PosChange : MonoBehaviour
         switch (Count)
         {
             case 0: SceneManager.LoadScene("GameScene"); break;
-            case 1: break;
+            case 1: SceneManager.LoadScene("Option"); break;
             case 2: Application.Quit(); break;
             default: break;
         }

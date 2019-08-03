@@ -21,6 +21,7 @@ TagManager:
   - WarpObj
   - Arrow
   - Planet
+  - Score
   layers:
   - Default
   - TransparentFX

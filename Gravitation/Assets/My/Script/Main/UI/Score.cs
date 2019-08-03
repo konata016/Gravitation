@@ -23,6 +23,9 @@ public class Score : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        ScorePoint += EnemyGenerator.EnemyPoint;
+        if (other.gameObject.tag == "Score")
+        {
+            ScorePoint += EnemyGenerator.EnemyPoint;
+        }
     }
 }
